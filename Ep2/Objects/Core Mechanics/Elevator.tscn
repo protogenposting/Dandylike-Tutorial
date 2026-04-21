@@ -1,0 +1,124 @@
+[gd_scene format=3 uid="uid://cr6n2sktdb8dp"]
+
+[ext_resource type="Script" uid="uid://cgubejkxegy3" path="res://Objects/Core Mechanics/Elevator.gd" id="1_tgoyf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ucqo4"]
+size = Vector3(7, 7, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tgoyf"]
+size = Vector3(7, 7, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jf4pp"]
+size = Vector3(7, 1, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tgoyf"]
+size = Vector3(7, 1, 4)
+
+[sub_resource type="Animation" id="Animation_jf4pp"]
+resource_name = "Closed"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatableBody3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -0.6)]
+}
+
+[sub_resource type="Animation" id="Animation_rc1xe"]
+resource_name = "Open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatableBody3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 7, -0.6)]
+}
+
+[sub_resource type="Animation" id="Animation_r5boi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatableBody3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -0.6)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fkvx3"]
+_data = {
+&"Closed": SubResource("Animation_jf4pp"),
+&"Open": SubResource("Animation_rc1xe"),
+&"RESET": SubResource("Animation_r5boi")
+}
+
+[node name="Elevator" type="Node3D" unique_id=2059225518 node_paths=PackedStringArray("area", "playerCountArea", "animationPlayer")]
+script = ExtResource("1_tgoyf")
+area = NodePath("Area3D")
+playerCountArea = NodePath("PlayerCountChecker")
+animationPlayer = NodePath("AnimationPlayer")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1532946032]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=423271786]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9604645e-07, -0.35000005, -4)
+size = Vector3(8, 0.7, 8)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=561394354]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4999995, 3.1499999, -4)
+size = Vector3(1, 6.3, 8)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D" unique_id=56037439]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5000005, 3.1499999, -7.5)
+size = Vector3(7, 6.3, 1)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1779725346]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5000005, 3.1499999, -3.5)
+size = Vector3(1, 6.3, 7)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1486016711]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7683716e-07, 6.8, -4)
+size = Vector3(8, 1, 8)
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="." unique_id=979406370]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.6)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D" unique_id=628300243]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+shape = SubResource("BoxShape3D_ucqo4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AnimatableBody3D" unique_id=860574507]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+mesh = SubResource("BoxMesh_tgoyf")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=243193209]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=2084513900]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+shape = SubResource("BoxShape3D_jf4pp")
+
+[node name="PlayerCountChecker" type="Area3D" parent="." unique_id=836164834]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerCountChecker" unique_id=1930148388]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
+shape = SubResource("BoxShape3D_tgoyf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=293680438]
+libraries/ = SubResource("AnimationLibrary_fkvx3")
+playback_default_blend_time = 0.3

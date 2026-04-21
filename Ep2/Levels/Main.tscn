@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://b4jvjswjiwqv6"]
+
+[ext_resource type="PackedScene" uid="uid://dce64tp835mxr" path="res://Objects/Core Mechanics/Player.tscn" id="1_a22an"]
+[ext_resource type="Script" uid="uid://c3pcmm6mawonl" path="res://Levels/World.gd" id="1_h1khe"]
+[ext_resource type="PackedScene" uid="uid://cr6n2sktdb8dp" path="res://Objects/Core Mechanics/Elevator.tscn" id="2_vbwdf"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_glv2v"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_uu6xs"]
+sky_material = SubResource("ProceduralSkyMaterial_glv2v")
+
+[sub_resource type="Environment" id="Environment_r0du0"]
+background_mode = 2
+sky = SubResource("Sky_uu6xs")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Node3D" type="Node3D" unique_id=545884143 node_paths=PackedStringArray("levelNode", "elevator")]
+script = ExtResource("1_h1khe")
+levelNode = NodePath("World")
+elevator = NodePath("Elevator")
+floors = Array[String](["res://Levels/Floors/FloorTemplate.tscn"])
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1508405482]
+environment = SubResource("Environment_r0du0")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1691691906]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CharacterBody3D" parent="." unique_id=1058435385 instance=ExtResource("1_a22an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.822169, 0)
+
+[node name="Elevator" parent="." unique_id=2059225518 instance=ExtResource("2_vbwdf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8273766, 0.5, -7.8021126)
+
+[node name="World" type="Node3D" parent="." unique_id=2116304557]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="World" unique_id=953104855]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6833954, 0, 4.8311615)
+use_collision = true
+size = Vector3(40.5643, 1, 25.338287)

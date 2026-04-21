@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://coxcdovclmp25"]
+
+[ext_resource type="Script" uid="uid://cplok8dgxgkk3" path="res://Objects/Core Mechanics/Items/Item.gd" id="1_ul00n"]
+[ext_resource type="Texture2D" uid="uid://cu8k4x4jtmi2q" path="res://Assets/Sprite-0001.png" id="2_6rda4"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ul00n"]
+radius = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_ul00n"]
+
+[node name="Item" type="Area3D" unique_id=1512151401]
+script = ExtResource("1_ul00n")
+itemName = "item that gives you stamina"
+itemDescription = "it giv stamna yay"
+itemTexture = ExtResource("2_6rda4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=341896946]
+shape = SubResource("SphereShape3D_ul00n")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=332959675]
+mesh = SubResource("SphereMesh_ul00n")

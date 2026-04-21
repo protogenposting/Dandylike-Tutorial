@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://dce64tp835mxr"]
+
+[ext_resource type="Script" uid="uid://diks8tu01cgu4" path="res://Objects/Core Mechanics/Player.gd" id="1_xhfnw"]
+
+[sub_resource type="Curve" id="Curve_xhfnw"]
+_limits = [6.0, 7.0, 1.0, 5.0]
+_data = [Vector2(1, 6), 0.0, 0.0, 0, 0, Vector2(5, 7), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_kpjcp"]
+_limits = [9.0, 12.0, 1.0, 5.0]
+_data = [Vector2(1, 9), 0.0, 0.0, 0, 0, Vector2(5, 12), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_kne1u"]
+_limits = [100.0, 150.0, 1.0, 5.0]
+_data = [Vector2(1, 100), 0.0, 0.0, 0, 0, Vector2(5, 150), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rxg2q"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ixxtv"]
+radius = 2.0
+
+[node name="CharacterBody3D" type="CharacterBody3D" unique_id=1058435385 node_paths=PackedStringArray("inventoryBox", "cameraPivot", "staminaBar", "interactionShape") groups=["Player"]]
+script = ExtResource("1_xhfnw")
+inventoryBox = NodePath("Control/HBoxContainer")
+cameraPivot = NodePath("Node3D")
+staminaBar = NodePath("Control/StaminaBar")
+walkSpeedScaling = SubResource("Curve_xhfnw")
+runSpeedScaling = SubResource("Curve_kpjcp")
+staminaScaling = SubResource("Curve_kne1u")
+interactionShape = NodePath("Area3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=141514546]
+shape = SubResource("CapsuleShape3D_rxg2q")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=2079116119]
+
+[node name="SpringArm3D" type="SpringArm3D" parent="Node3D" unique_id=1795786150]
+transform = Transform3D(1, 0, 0, 0, 0.9244063, 0.3814092, 0, -0.3814092, 0.9244063, 0, 0, 0)
+spring_length = 7.975
+
+[node name="Camera3D" type="Camera3D" parent="Node3D/SpringArm3D" unique_id=225330944]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.8683987)
+
+[node name="Character" type="Node3D" parent="." unique_id=2125128169]
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1602544871]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=601427141]
+shape = SubResource("SphereShape3D_ixxtv")
+
+[node name="Control" type="Control" parent="." unique_id=1574412443]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StaminaBar" type="ProgressBar" parent="Control" unique_id=1930275197]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.78200006
+anchor_right = 0.418
+anchor_bottom = 1.0
+offset_top = 0.26394653
+offset_right = -0.53601074
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control" unique_id=849272598]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.611
+anchor_top = 0.79
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.12799072
+offset_top = 0.07998657
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="Control/HBoxContainer" unique_id=1968524801]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="Control/HBoxContainer" unique_id=578982949]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="Control/HBoxContainer" unique_id=738421657]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2

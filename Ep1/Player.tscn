@@ -27,3 +27,21 @@ spring_length = 7.975
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.8683987)
 
 [node name="Character" type="Node3D" parent="." unique_id=2125128169]
+
+[node name="Control" type="Control" parent="." unique_id=809885922]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="Control" unique_id=154377824]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.85300004
+anchor_right = 0.42800003
+anchor_bottom = 1.0
+offset_top = 0.25598145
+offset_right = -0.056030273
+grow_vertical = 0
