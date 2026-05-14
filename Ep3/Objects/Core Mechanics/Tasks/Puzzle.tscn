@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dac6ow0cbv01x"]
+
+[ext_resource type="PackedScene" uid="uid://brdkj2rikt34" path="res://Objects/Core Mechanics/Tasks/Task.tscn" id="1_4g51f"]
+[ext_resource type="Script" uid="uid://dpi3i67mac0bs" path="res://Objects/Core Mechanics/Tasks/Puzzle.gd" id="2_c7s4a"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c7s4a"]
+albedo_color = Color(1, 0.21176471, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_xdq1o"]
+material = SubResource("StandardMaterial3D_c7s4a")
+
+[node name="Task" unique_id=1005267504 instance=ExtResource("1_4g51f")]
+script = ExtResource("2_c7s4a")
+
+[node name="MeshInstance3D" parent="." index="0" unique_id=279762757]
+mesh = SubResource("SphereMesh_xdq1o")
+
+[node name="Button" type="Button" parent="." index="3" unique_id=259163849]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "CLICK ME PLEASE I BEG OF YOU"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

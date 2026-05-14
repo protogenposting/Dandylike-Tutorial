@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://w18ri6u2vexq"]
+
+[ext_resource type="PackedScene" uid="uid://coxcdovclmp25" path="res://Objects/Core Mechanics/Items/Item.tscn" id="1_kx83q"]
+[ext_resource type="Script" uid="uid://jq4d0j3tk8x3" path="res://Objects/Core Mechanics/Items/StaminaItem.gd" id="2_qwmlq"]
+
+[node name="Item" unique_id=1512151401 instance=ExtResource("1_kx83q")]
+script = ExtResource("2_qwmlq")

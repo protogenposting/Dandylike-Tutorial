@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://b36dgr7hti6he"]
+
+[ext_resource type="PackedScene" uid="uid://brdkj2rikt34" path="res://Objects/Core Mechanics/Tasks/Task.tscn" id="1_vn3nx"]
+[ext_resource type="Script" uid="uid://067n5nfcq3ew" path="res://Objects/Core Mechanics/Tasks/Button.gd" id="2_7p51i"]
+
+[node name="Task" unique_id=1005267504 instance=ExtResource("1_vn3nx")]
+script = ExtResource("2_7p51i")

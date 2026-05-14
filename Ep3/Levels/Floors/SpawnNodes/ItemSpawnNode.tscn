@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://yet0bfwo1gke"]
+
+[ext_resource type="Texture2D" uid="uid://cu8k4x4jtmi2q" path="res://Assets/Sprite-0001.png" id="1_eeffv"]
+
+[node name="ItemSpawnNode" type="Node3D" unique_id=1805575223]
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1555853811]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+texture = ExtResource("1_eeffv")

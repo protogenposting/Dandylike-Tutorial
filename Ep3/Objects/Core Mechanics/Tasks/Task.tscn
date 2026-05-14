@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://brdkj2rikt34"]
+
+[ext_resource type="Script" uid="uid://blwdhnkl0tdup" path="res://Objects/Core Mechanics/Tasks/Task.gd" id="1_v8h68"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_v8h68"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_v8h68"]
+radius = 2.0
+
+[node name="Task" type="Node3D" unique_id=1005267504 node_paths=PackedStringArray("playerPos")]
+script = ExtResource("1_v8h68")
+playerPos = NodePath("PlayerPos")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=279762757]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("SphereMesh_v8h68")
+
+[node name="PlayerPos" type="MeshInstance3D" parent="." unique_id=1752394897]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1.4)
+visible = false
+mesh = SubResource("SphereMesh_v8h68")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1626885497]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1124732567]
+shape = SubResource("SphereShape3D_v8h68")

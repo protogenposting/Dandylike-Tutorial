@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://nueca22xcxxe"]
+
+[ext_resource type="PackedScene" uid="uid://brdkj2rikt34" path="res://Objects/Core Mechanics/Tasks/Task.tscn" id="1_x7xw3"]
+[ext_resource type="Script" uid="uid://bwoubeesnsx1g" path="res://Objects/Core Mechanics/Tasks/Machine.gd" id="2_ghaph"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ghaph"]
+albedo_color = Color(1, 0.19215687, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_r4a31"]
+material = SubResource("StandardMaterial3D_ghaph")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_v8h68"]
+radius = 2.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ghaph"]
+viewport_path = NodePath("Sprite3D/SubViewport")
+
+[node name="Task" unique_id=1005267504 instance=ExtResource("1_x7xw3")]
+script = ExtResource("2_ghaph")
+locksPlayer = true
+
+[node name="MeshInstance3D" parent="." index="0" unique_id=279762757]
+mesh = SubResource("SphereMesh_r4a31")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D" parent_id_path=PackedInt32Array(1626885497) index="1" unique_id=1643163228]
+shape = SubResource("SphereShape3D_v8h68")
+
+[node name="Sprite3D" type="Sprite3D" parent="." index="3" unique_id=1625259082]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8, 0)
+texture = SubResource("ViewportTexture_ghaph")
+
+[node name="SubViewport" type="SubViewport" parent="Sprite3D" index="0" unique_id=408706755]
+transparent_bg = true
+size = Vector2i(256, 256)
+
+[node name="ProgressBar" type="ProgressBar" parent="Sprite3D/SubViewport" index="0" unique_id=711575442]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

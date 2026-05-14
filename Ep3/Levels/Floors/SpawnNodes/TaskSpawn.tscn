@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://c30lds4rvl55"]
+
+[ext_resource type="Texture2D" uid="uid://bdvij4a5dgs3q" path="res://Assets/Sprite-0002.png" id="1_edhsm"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_edhsm"]
+
+[node name="ItemSpawnNode" type="Node3D" unique_id=1805575223]
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1555853811]
+transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, 0.5, 0, -0.5, -2.1855694e-08, 0, 0, 0)
+texture = ExtResource("1_edhsm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1810800140]
+mesh = SubResource("SphereMesh_edhsm")

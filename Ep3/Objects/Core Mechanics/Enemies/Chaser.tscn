@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://emug4n1kjub0"]
+
+[ext_resource type="Script" uid="uid://b32s2b4k2cmuj" path="res://Objects/Core Mechanics/Enemies/Chaser.gd" id="1_1pp0u"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ay2hb"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ay2hb"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_1pp0u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1pp0u"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1pp0u"]
+points = PackedVector3Array(0, 0, 0, 20, 0, 40, -20, 0, 40, -20, 2, 40, 20, 2, 40)
+
+[node name="Chaser" type="CharacterBody3D" unique_id=1856446390 node_paths=PackedStringArray("agent", "lineOfSight", "wallcast", "hitbox")]
+collision_layer = 0
+script = ExtResource("1_1pp0u")
+agent = NodePath("NavigationAgent3D")
+lineOfSight = NodePath("Sight")
+wallcast = NodePath("Sight/WallCast")
+hitbox = NodePath("MeshInstance3D2/Hitbox")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1895448967]
+shape = SubResource("CapsuleShape3D_ay2hb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1941477708]
+mesh = SubResource("CapsuleMesh_ay2hb")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=645587547]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.6)
+mesh = SubResource("BoxMesh_1pp0u")
+
+[node name="Hitbox" type="ShapeCast3D" parent="MeshInstance3D2" unique_id=247458000]
+shape = SubResource("BoxShape3D_1pp0u")
+target_position = Vector3(0, 0, 0)
+collision_mask = 2
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1120993821]
+target_desired_distance = 2.0
+debug_enabled = true
+
+[node name="Sight" type="ShapeCast3D" parent="." unique_id=1209014864]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3000001, 0)
+shape = SubResource("ConvexPolygonShape3D_1pp0u")
+collision_mask = 2
+
+[node name="WallCast" type="RayCast3D" parent="Sight" unique_id=1827072229]
